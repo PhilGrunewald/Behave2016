@@ -190,12 +190,124 @@ Moreover, it is observed that in the simulated data, periods of the day when dem
 Previously, we discussed the fact that the correlation between the time of the day and the use of certain appliances has not been adequately represented in current modelling approaches. The analysis carried out using the CREST model, form which the profile shown in Fig. X was obtained, revealed that this model is one of such cases. The load timing issues associated with this are reflected in the drasticness of the transitions from periods of low demand to periods of high demand, or vice versa. It is observed that the transitions experienced at the beginning and the end of the “active day” in the simulated profile are quite abrupt, whereas the corresponding transitions in the real-life profile are considerably more gradual (See Fig. X).
 
 
-# New data on temporality and flexibility [Phil]
 
-Measuring flexibility
-¬	Principles
-¬	Methods
-Applying new data to models
+# Outlook for new models with new data
+
+- the previous section has shown that temporalities of electricity use in households are poorly captured in current models, due to a lack of data. 
+- the Section on HES {have we got that covered?} described the challenges in scaling up instrumentation based approaches. Both cost and intrusiveness inhibit large scale application.
+- Smart Meter data is expected to become readily available over coming years. However, the experience with early trials in the UK has highlighted challenges of data access and privacy (ref EDRP)
+- Here we discuss not just what data could become easily accessible, but in the context of the previous sections, what evidence this data is intended to support and what limitations remain due to data collection challenges. We will argue that purposeful collection of the 'right' data will allow future models to provide more meaningful answers to emerging questions in energy research.
+
+## New Data - what for?
+Section 1 laid out the evolution of data and models in response to emerging technical and policy challenges, and suggests that data availability shapes and constrains what such models can set out to achieve.
+
+The motivation for initial models was a desire to understand  overall demand measured in annual collective consumption, with a view to reduce it. Later operational challenges requiring temporally and spatially resolved data.
+
+With the emergence of variable renewable sources as cost competitive generators, new challenges need to be addressed to support their effective system integration. Alongside flexible generators, extended and smarter networks and storage, demand side flexibility is expected to play a potentially large role for future system balancing.
+
+Flexibility itself is therefore becoming a unit of enquiry. This is a fundamental change in the location of flexibility, which hitherto is conveniently delivered from fossil fuel stocks. It also constitutes a significant change in how flexibility can be represented in models. A flexible generator can be defined with a small number of parameters
+
+- Ramp rate (MW/hour)
+- Capacity constraints (min and max MW)
+- State of operation (MW)
+- Reliability (%)
+- Marginal cost of operation (£/MWh/h)
+
+Some of these parameters are interdependent. For example, a part loaded plant (somewhere between it's minimum stable operation and its maximum capacity) can ramp significantly faster than one starting from a 'cold' state, where the power station needs to be gradually brought up to temperature - a process that can take hours or even days. A plant operating at its minimum stable operation, which often is well above 30% of its maximum capacity, can only provide 'upward' flexibility, and vice versa for a plant running at capacity.
+
+Storage can be represented with similar parameters, principally adding the State of Charge (MWh) as an additional constraint (full stores cannot charge, empty ones cannot discharge).
+
+Since storage and generators can be represented as revenue optimising, their operation can be approximated using mathematical optimisation for given market prices, resulting from a static demand profile.
+
+A deterministic approach to demand side flexibility is to decompose the load into appliances and to divide these up into 'flexible' and 'inflexible'. Load of flexible appliances is moved to low cost periods and the resulting load profile can be reintroduced to the existing supply model. This approach can reveal the saving potential from such load shifts (@Strbac16,@SmartPower). It does, however, not reveal the 'cost' of its provision, nor the societal constraints that may inhibit the technical potential.
+
+The logical translation of the cost optimisation approach is to assign similar parameters to the demand side as have been used for supply. Roscoe et al. use price elasticity as the principle response mechanism. As the price for electricity goes up, certain appliances are said to reduce in load. Data for this approach is available from trials using differing prices (@CER,@CLNR). Elasticity can be measured as the ratio between a change in demand to change in price, and applied in the model to create a load profile that responds to prices.
+
+The latter approach begins to reveal the 'cost' of flexibility and, if collected alongside socio-demographic data, also allows to infer which groups or clusters may be more amenable to flexibility than others.
+
+Price elasticity as a metric is consistent with the 'cost optimisation' principle of supply side models. It may not necessarily be the sole rationale for demand side flexibility. @Grunewald_Demand16 argues that much of the flexibility on the demand side is routed in practices of everyday life. How far the load of a dishwasher can be shifted in time is not just a function of price. Constraints in time and space, skills and availability of clean clothes (e.g. material) all factor heavily in the provision of flexibility.
+
+Here we propose an incremental improvement on existing data, which could provide better visibility of these underlying factors and thus lead to more accurate forward projections of demand side flexibility.
+
+## Measuring flexibility
+
+If the locus of flexibility resides at least partially with people and their practices, then measuring appliance use alone may not provide a good insight into flexibility. Difficult as it may appear at first, capturing activities of electricity users alongside their actual power consumption would illuminate the origins and constraints of flexibility better.
+
+Since flexibility is a relative concept -- one can only be flexible in relation to a 'business as usual' case -- it cannot be measured in a single pass. For a power station it is reasonable enough to assume a steady state as a baseline against which to measure a flexible response. For constantly changing, volatile and diverse load profiles of end users (@DEMAND-peak16), the reference baseline is harder to define. Some users may routinely use little electricity at certain times. Crediting them with flexibility would be misleading.
+
+A sufficiently large and representative sample is therefore important to form a reference baseline, before claims about flexibility can be made.
+
+From this baseline flexibility can be measured as a dynamic response. The response can be any difference in conditions between a control group and the sample group, including, but not limited to price signals.
+
+The variability in end uses over time and across populations is high, whereas the typical responses observed in trials are relatively small (5-10% of load at peak times). To reliably tell true responses from stochastic variation, large sample sizes may be required. Estimates for appropriate sample sizes tend to be greater than 2000, which is significantly larger than most studies in this area to date.
+
+Smart meter data is expected to become available at these scales. @Wilson propose methods to infer activity information from these data. Here we propose an alternative approach which captures activities explicitly and may inform inferences of activities in future.
+
+<!-- 
+- what is flexible (people rather than appliances)
+- needs a baseline (flexible in relation to what)
+- needs dynamic monitoring (baseline vs flexible case)
+- high variability and diverse set of enablers and inhibitors for flexibility (needs a large sample)
+ -->
+
+## Collecting new data on flexibility
+
+Insights into human activities with large sample sizes is already available in the form of time use studies. These collect self reported activity diaries from thousands of participants. Time use data provides rich insights into the allocation of time to different activities (time spent asleep, at work, with friends...) and its distribution within a population (male / female, rich / poor, young / old). These data are collected longitudinally around every decade in many European countries using harmonised time use codes. These allow comparisons between regions and trends over time \footnote{Some caution should be exercised when making such comparisons. Inconsistencies in the meaning of activities across time and cultures, and changes in methodology may limit their comparability. See @Anderson16 }
+
+Time use data already informs occupancy patterns for household models (see Section 3 on CREST), and has been used to understand the possible composition of loads (@Torriti15).
+
+What time use data presently does not allow to infer is energy consumption or flexibility. Here we will discuss how to incorporate these two new dimensions.
+
+### Conditions for new data to support insights into flexiblity
+
+We argue for four conditions which new data on demand side flexibility should adhere to, if policy relevance is to be achieved: 
+
+1) Provision of a reference baseline, 
+2) scalability, 
+3) working hypothesis, and 
+4) dynamic collection methods.
+
+#### Scalability
+Electricity use is highly diverse and variable. Data that is intended to support robust analysis of causal relationships (such as demand response) needs to be sufficiently large to tell 'signal' from 'noise'. To detect a 5% signal with 95% confidence, sample sizes typically need to exceed 2000. With conventional 'case study' approaches and personal visits to participating households, these sample sizes are prohibitively expensive for many research budgets. Scalability therefore requires a low cost approach that can be replicated many times.
+
+#### Reference baseline
+One of the challenges with flexibility and demand response is to prove that is actually happened. Is low demand the result of a purposeful response, or might it have happened anyway? A baseline constitutes a reference case against which responses can be judged within statistical means. 
+
+#### Dynamic collection methods
+Flexibility is a dynamic property. Whether an object, activity or energy-use is flexible or not is only exposed in response to an intervention (and against the above mentioned baseline).
+It cannot be observed within a static snapshot. Even an interview approach attempting to collect a participants perceived flexibility is unlikely to yield reliable results. A claim that one 'would' be flexible about the timing of certain activities is very different from actioning them, not least because this action would have knock-on effects on many other activities, which are difficult for interviewees to fully conceptualise.
+
+#### Working Hypothesis
+The leap from observing correlations between interventions and responses to claiming a causal relationship can easily lead to artificial results, especially when many variables are tested at the same time. Wherever large datasets with a large number of variables are used for analysis it is therefore advisable to set out a clear working hypotheses first, to ensure that findings are genuine. As a simple example, if energy data can be broken down into hundreds of sub-groups, it is very likely that one of these sub-groups has greatly reduced load during an intervention. If this happens to be male, over 65s, with a low income, 2 children and a name beginning with 'F', does not necessarily mean that this group is more responsive or flexible. If however, one set out with this hypothesis and it is borne out by the data, such finding should be taken more seriously.
+
+### Suggested approaches to collect such data
+Time-use data fulfils the first condition for scalability. By combining this collection method with a low cost monitoring approach for electricity, it is possible to create a baseline of activity related electricity use. Such data collection has been developed by the METER project, which deploys low cost smart phones to collect these data [ref ECEEE].
+
+All members of a household above the age of eight are encouraged to complete a time-use diary over 28 hours (spanning two 5-9pm periods), while their combined load profile is sampled with 1 second resolution.
+
+Household and individual surveys (see Appendix A) are collected, such that data can be grouped and clustered.
+
+In a second phase the passive observation of activities and electricity loads will turn into active response observation, where participants will receive specific interventions and any changes in both activities and load shape can be observed and contrasted against a control group without intervention. The scale allows for groups of sufficient size to be compared and even small responses to be exposed.
+
+## Applying new data to models
+
+The most conventional intervention that can be measured with the above approach is price response. Studies such as CER and CLNR have already demonstrated that peak reductions of 5-10% are achievable in response to peak time prices. The resulting price elasticities can readily be incorporated into existing techno-economic models.
+
+The new data can add to the exciting data is the activity dimension, which allows to narrow down by activity, socio-demographic grouping where responses are most likely to be forthcoming and which inhibiting factors may need to be addressed to enable additional flexibility.
+
+New model functionality may be required to accommodate the latter. Instead of price as the dependent variable, it is possible to introduce new degrees of freedom, such as the rise or decline of particular practices, which are associated with different levels of consumption or flexibility.
+
+
+
+# Conclusion
+
+Instead of working with conveniently available data, this paper suggests that purposeful and targeted collection of data may help future energy demand models to better reflect increasing complexities of 'responsive' demand.
+
+# Appendix A
+
+## Household questionnaire 
+
+meter_household_questionnaire.md (30 May 2016 15:22) 
 
 # Conclusions and discussion [all]
 ¬	Summarise
@@ -228,4 +340,13 @@ Applying new data to models
 21.	Zimmermann, J.-P., et al., Household Electricity Survey:  A study of domestic electrical product usage, 2012.
 22.	Sidebotham, L., Customer-Led Network Revolution: Progress Report 7, 2014.
 23.	Powells, G., et al., Peak electricity demand and the flexibility of everyday life. Geoforum, 2014. 55: p. 43-52.
+
+Jose
+
+[UKTUS2003] UK Office for National Statistics, The United Kingdom 2000 Time Use Survey: Technical Report, 2003.
+[CER2011] Irish Commission for Energy Regulation, Electricity Smart Metering Customer Behaviour Trials (CBT): Findings Report, 2011.
+[HES2012] Zimmerman et al., Household Electricity Survey: A study of domestic electrical product usage, 2012.
+[CLNR2015] Sidebotham, Liz, Customer-Led Network Revolution: Project closedown report, 2015.
+[Richardson2010] Richardson et al., Domestic electricity use: A high-resolution energy demand model, Energy and Buildings, 2010.
+
 
