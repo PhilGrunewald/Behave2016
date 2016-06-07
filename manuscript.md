@@ -69,31 +69,42 @@ Various countries require energy-using products to be registered centrally befor
 
 
 ### Physical inspection of homes
-Physical surveys of households can provide insights into the ownership of end-use equipment along with physical characteristics of the buildings themselves. Such surveys can be through home visits, such as those used to generate SAP assessments or provide representative national statistics on the housing stock. Governments also collect and collate these through the use of national surveys. For England, the most significant for end-use models is the English Housing Survey (EHS), which is a continuous national survey, commissioned by the Department for Communities and Local Government (DCLG). It collects information about people’s housing circumstances and the condition and energy efficiency of housing in England. In addition to the household interview (next section) it undertakes a physical inspection of a sub-sample of the properties. [list earlier studies, EHCS, etc]. Similar studies are undertaken in other parts of the UK.
+Physical inspections can provide insights into the ownership of end-use equipment along with physical characteristics of the buildings themselves, such as used for SAP assessments.
+
+Such surveys can be through home visits, such as those used to generate SAP assessments or provide representative national statistics on the housing stock. Governments also collect and collate these through the use of national surveys. Cost and intrusiveness of this approach is high.
+
 
 ### Home surveys
-, market research companies also collect useful information from householders, by making use of questionnaires given to large panels (multiple thousands).  For example, the market research GfK has a home audit panel, which can be used to provide very reliable estimates of ownership figures for installed appliances, insulation, recent sales, etc.
+Governments and market research companies collect information on appliance ownership, recent sales and efficiency measures via questionnaires. Representative panels with multiple thousand surveys are available from GfK and the English Housing Survey (EHS).
 
-### Interviews with energy users
-### Time-use surveys
+[XXX Cite GfK data] [XXX Cite Department for Communities and Local Government (DCLG)]
+Surveys are complemented by physical inspection for a sub-sample of the properties. 
+
 
 
 ### Interview survey of householders
-In terms of understanding how and why people are using their energy-using equipment in the home, it is necessary to undertake interviews of the householders themselves. Such interviews can provide insights into ownership of equipment (without the need for a physical inspection), and more importantly insights into usage patterns and motivation for use.
+@Janda11 and @Huebner15 argue that energy consumption of homes is poorly represented by their physical characteristics. 65% of the variation in energy use is not attributable to appliances or building properties.
 
-Interviews with householders can take different forms. The Government undertakes regular surveys of householders. The English Housing Survey provides this function. [ref]. Previously, the Survey of English Housing (SHE) includes information from over 15,000 households. Housing in England reports were the annual reports based principally on the Survey of English Housing. They were published each year that the survey operated, from 1993-93 to 2007-08 inclusive [14], and contain detailed analyses, commentary, over 200 data tables and charts and a full technical description of the survey. Prior to 2008, The ONS interviewed householders for the English Household Conditions Survey (EHCS) [15]. These types of report, in addition to providing a snapshot in time, also provide longitudinal data. 
+Interviews of the householders themselves can provide not only insights into ownership of equipment (without the need for a physical inspection), but also insights into usage patterns and motivation for use.
+
+Relevant UK examples include the annual Survey of English Housing (N=15,000), published annually as Housing in England reports 1993-93 [XXX should this read 83?] to 2007-08 inclusive [14]. Prior to 2008, The ONS interviewed householders for the English Household Conditions Survey (EHCS) [15].
 
 
-Beyond simple questionnaires with large sample sizes, extended interviews with smaller sample sizes can be employed.  The targeted use of household diaries to log the use of equipment can be a useful low cost method, e.g. to obtain numerical information on the use of washing machines (number of loads and temperature selected). 
+### Diaries and time-use surveys
+Greater detail of household activities can be obtained with time-use diaries and targeted diaries focussing on equipment usage, such as routines and frequency of washing machine use. [XXX cite data?]
 
-Within householder surveys, time use diaries can be included. These provide a rich insight into what people are actually doing (activity), though not necessarily why.  Other techniques to understand why consumers are acting in a particular way can be done through semi-structured interviews, and focus groups to explore reasons for particular actions and activity.  [gap - couple activity with consumption with explanation]
+Within householder surveys, time use diaries can be included. These provide a rich insight into what people are actually doing (activity). [XXX TUS bit here]
+
+Understanding _why_ consumers are acting in particular ways is attempted to be illuminated with semi-structured interviews and focus groups, typically with significantly smaller sample sizes. [XXX cite data]
 
 ### Product registration and sales
 [moved up]
 
+
 Technical information on products can also be obtained directly from manufactures, to include information such as U-values, power ratings, and efficiency values. These data are from data fiches and information labels. With such data increasingly being available on online, automatic web ‘scrapers’ are being used to obtain such technical information. [ref]
 
 Market research companies also log sales going through retailer establishment. For example, GfK will collect data (on the number of individual appliances sold) directly from retail stores. 
+
 ### Metering of homes and end-uses
 The most robust and accurate way of measuring use of equipment by householders, especially by time of day is through the use of metering equipment. 
 Historically, these have been quite intrusive and relatively expensive to undertake. As such, there have been few metering studies focused at the end-use, and even fewer including time of day. The first few end-use studies were more interested in understanding the total consumption (kWh) rather than kWh every few seconds or minutes.  The paucity of such types of metering was primarily due to metering technology availability and the cost of such equipment.  
