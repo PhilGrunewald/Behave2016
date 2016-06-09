@@ -1,26 +1,23 @@
+This paper reviews the evolution of residential demand models from simple accounting frameworks into sophisticated temporally resolved stochastic tools. We argue that the primary data supporting these models has not kept pace with the ever increasing demands placed upon them, especially in relation to the timing and flexibility of demand.
+We present systematic shortcomings in the representation of activity based electricity consumption and propose new approaches to improve on the ability to model demand baselines and flexibility.
+
 # INTRODUCTION
-With the closure of 55% of the UK's fossil fuel capacity over the next decade, the system flexibility, which these plant provide, will be greatly reduced. If less flexible low carbon sources are to take their place, new forms of flexibility are needed.
-Interconnections, storage and demand response hold great promise in this area.
- For the UK the potential annual system savings from demand response have been estimated to be in the billions of pounds [1]. The extent to which the 'technical potential' can be realised is not well understood.
 
-In this paper we argue that current models are not well equipped to address this new requirement and that supporting data is still lacking at the required scale.
+The role of the demand side is expected to undergo a fundamental change from a passive load that is to be met using the 'predict and provide' paradigm towards an active and responsive part of the system. 
+With the closure of 55% of the UK's fossil fuel capacity over the next decade, the system flexibility, which these plant provide, will be greatly reduced. If less flexible low carbon sources are to take their place, new forms of flexibility are needed. The National Infrastructure Commission identified a annual saving potential of up to £8.1bn by 2030 [@NIC16] through a combination of storage, interconnections and demand-side-response (DSR).
 
-We explore the status of demand models and identify conceptual shortcomings and data gaps that need to be addressed if we are to better understand demand side flexibility.
+The extent to which the 'technical potential' for DSR can be realised in practice is not well understood. Demand side modelling efforts therefore need to extend their focus from assessing demand reduction opportunities, towards a better understanding of the precise timing of demand and its potential flexibility. 
 
-
-##	Changing needs for evidence in the residential sector
-¬	From overall demand to flexibility
-¬	Any definitions, scope of paper
-¬	Literature review (though some of this will sit more neatly in following sections)
+In this paper we argue that current models are not well equipped to address these new requirements and that supporting data is still lacking at the required scale. In Section 2 we perform a brief review of past developments in residential demand models and the data used to support them alongside some of the key literature in this area. The limitations of the latest generation of models to represent the temporally of demand is explored in Section 3, before Section 4 sets out opportunities to overcome these with new data collection approaches. 
 
 
 # REVIEW OF MODELS AND DATA USED FOR UNDERSTANDING RESIDENTIAL DEMAND
 ## Taxonomy of residential energy models
-Energy models are generally used to explore and explain changes in energy consumption. There are generally two main approaches to modelling energy consumption in the residential sector:  top-down and bottom-up - the terminology referring to the hierarchical level of the data inputs. The use of each depends on the data available and the purpose of the analysis.  Top-down models generally make use of historic sector specific (e.g. residential) time series data of energy consumption and related sector-specific data.  Such top-down models are usually driven by econometric data (such as energy and appliance prices) and technological data (such as autonomous rates of efficiency improvement and ownership rates). On the other hand, bottom-up models require significantly more data at the sub-sector level, and so can account for energy consumption at the regional, individual household or equipment level. Figure 1 shows a simple classification of residential modelling.  [1] [2]
+Energy models are generally used to explore and explain changes in energy consumption. There are generally two main approaches to modelling energy consumption in the residential sector:  top-down and bottom-up - the terminology referring to the hierarchical level of the data inputs. The use of each depends on the data available and the purpose of the analysis.  Top-down models generally make use of historic sector specific (e.g. residential) time series data of energy consumption and related sector-specific data.  Such top-down models are usually driven by econometric data (such as energy and appliance prices) and technological data (such as autonomous rates of efficiency improvement and ownership rates). On the other hand, bottom-up models require significantly more data at the sub-sector level, and so can account for energy consumption at the regional, individual household or equipment level. Figure 1 shows a simple classification of residential modelling.  [@Swan09,@Kavgic10] 
 
-![Classification of residential model types. Based on @1](fig/classification.png)
+![Classification of residential model types. Based on @Swan09](fig/classification.png)
 
-Bottom up models are usually classified further into two main groups: engineering and statistical. The statistical ones can include regression methods when measured data are available [3], conditional demand analysis and neural networks [4].
+Bottom up models are usually classified further into two main groups: engineering and statistical. The statistical ones can include regression methods when measured data are available [@Fumo15], conditional demand analysis and neural networks [@Aydinalp02].
 
 However, it is the engineering style of bottom-up model that has, to date, presented the best opportunities to develop a greater understanding of how energy is being used at the sub-sector level, and how user behaviour influences consumption.  A selection of such models is now reviewed.
 
@@ -28,7 +25,7 @@ However, it is the engineering style of bottom-up model that has, to date, prese
 We review the historical development of UK residential end-use demand models with the examples of BREHOMES, DECADE, DCM and CREST. This review shows how the demands on these models has changed and increased over time and how analysts have responded by developing new and improved modelling and data collection approaches.
 
 ### BREHOMES
-BREHOMES is a physically-based residential housing stock model, providing national energy consumption estimates by house type [5]. It requires detailed information on the building type, heating system, internal and external temperatures, etc. Different versions of the underlying BREDEM algorithm support annual consumption (BRDEM-12) or monthly figures (BREDEM-8). This model allows the exploration of technology and policy interventions, especially relating to heating aspects of the home. 
+BREHOMES is a physically-based residential housing stock model, providing national energy consumption estimates by house type [@Shorrock91]. It requires detailed information on the building type, heating system, internal and external temperatures, etc. Different versions of the underlying BREDEM algorithm support annual consumption (BRDEM-12) or monthly figures (BREDEM-8). This model allows the exploration of technology and policy interventions, especially relating to heating aspects of the home. 
 
 For full housing physically-based stock models, such as this one, the following data is typically required:
 models, the following data are required:
@@ -44,9 +41,10 @@ Sources of such data are discussed in Section XXX3.
 ### DECADE
 
 The Domestic equipment and carbon dioxide emissions (DECADE) model advanced the resolution of BREHOMES by separating out lighting and appliances.
- DECADE is a detailed end-use model of energy consumption supporting product policy on mandatory energy labels and minimum energy performance standards. [6,7]
+ DECADE is a detailed end-use model of energy consumption supporting product policy on mandatory energy labels and minimum energy performance standards. [@Fawcett00,@Lane00]
+
 The detailed end-uses include cooking, lighting, water heating, consumer electronics, refrigeration. 
-This modelling approach produces annual energy consumption by end-use, with the primary use being the ex-ante impact assessments of technical potential, variation in usage patterns, and policy options [8, 9]. Similar modelling approaches are used internationally [10].
+This modelling approach produces annual energy consumption by end-use, with the primary use being the ex-ante impact assessments of technical potential, variation in usage patterns, and policy options [@Boardman94,@Boardman95]. Similar modelling approaches are used internationally [10 XXX I could not find this published].
 
 In addition to appliance stocks used for conventional stock models, this approach draws on replacement rates and use statistics as complementary data.
 
@@ -56,13 +54,13 @@ Inferring statistics on the actual use patterns of appliances from the available
 
 For lighting, it is possible to deduce use from lamps sold, stock level and the technical lifespan. For incardecants with a short lifetime (1000 hours) and high replacement rate, such estimates give a reasonable estimate. Whereas the deployment of LED is larger numbers make such estimates more difficult. The timing of lighting use still has to be assumed. Some lighting may remain on all day or throughout the night, regardless of active occupancy. More recently appliance level metering  have increased confidence in these figures (see HES below).
 
-Cooking appliances, such as ovens or hobs, are derived from regression analysis of cooking data of sample homes. [XXX cite Billsavers project, LEEP 1996]
+Cooking appliances, such as ovens or hobs, are derived from regression analysis of cooking data of sample homes. [@Palmer97]
 
-DECADE included first attempts to estimate load curves by end-use, but data supporting data was insufficient at the time and still remains an inhibiting factor in international attempts to adopt this approach [11]. Societal distribution of consumption is not represented.
+DECADE included first attempts to estimate load curves by end-use, but data supporting data was insufficient at the time and still remains an inhibiting factor in international attempts to adopt this approach [@Michaelis14]. Societal distribution of consumption is not represented.
 
 
 ### UKDCM 
-The DECADE Modelling was extended to create the UK Domestic Carbon Model (UKDCM) model [12], which extends the differentiation of loads to include space/water heating along with building types, using BREDEM-8 algorithm. Compared to BREHOMES new data on appliances [XXX can we be specific about the data? do we mention it in the 'Data' section? XXX] and lighting could be included, enabling long term technical and policy scenarios to be examined in more detail [13].
+The DECADE Modelling was extended to create the UK Domestic Carbon Model (UKDCM) model [@Boardman05], which extends the differentiation of loads to include space/water heating along with building types, using BREDEM-8 algorithm. Compared to BREHOMES new data on appliances [XXX can we be specific about the data? do we mention it in the 'Data' section? XXX] and lighting could be included, enabling long term technical and policy scenarios to be examined in more detail [13 XXX published?].
 
 ### CREST 
 The Centre for Renewable Energy Systems Technology (CREST) model simulates household load profiles with one minute resolution (@Richardson10b). The model has found a wide range of applications, including network constraints analysis. 
@@ -100,29 +98,29 @@ Socio-demographic information is included or can be brought in from other survey
 
 
 ### Interview survey of householders
-@Janda11 and @Huebner15 and [19] argue that energy consumption of homes is poorly represented by their physical characteristics alone. 65% of the variation in energy use is not attributable to appliances or building properties.
+@Janda11 and @Huebner15 and @Fell12] argue that energy consumption of homes is poorly represented by their physical characteristics alone. 65% of the variation in energy use is not attributable to appliances or building properties.
 
 Interviews of the householders themselves can provide not only insights into ownership of equipment (without the need for a physical inspection), but also help to understand usage patterns and motivation for use.
 
-Relevant UK examples include the annual Survey of English Housing (N=15,000), published annually as Housing in England reports 1993-93 [XXX should this read 83?] to 2007-08 inclusive [14]. Prior to 2008, The ONS interviewed householders for the English Household Conditions Survey (EHCS) [15].
+Relevant UK examples include the annual Survey of English Housing (N=15,000), published annually as Housing in England reports 1993-93 [XXX should this read 83?] to 2007-08 inclusive [@DCLG16a]. Prior to 2008, The ONS interviewed householders for the English Household Conditions Survey (EHCS) [@DCLG16].
 
 ### Diaries and time-use surveys
 Greater detail of household activities can be obtained with time-use diaries and targeted diaries focussing on equipment usage, such as routines and frequency of washing machine use. [XXX cite data?]
 
-Within householder surveys, time use diaries can be included. These provide a rich insight into what people are actually doing (activity). [XXX TUS bit here]
+Time use diaries present a special case of survey and provide a rich insight into what people are actually doing (activity). 
+These collect self reported activity diaries from thousands of participants revealing timing and durations. [@Gershuny03]
+
+These data are collected longitudinally around every decade in many European countries using harmonised time use codes. These allow comparisons between regions and trends over time \footnote{Some caution should be exercised when making such comparisons. Inconsistencies in the meaning of activities across time and cultures, and changes in methodology may limit their comparability. See @Anderson16 }
 
 Understanding _why_ consumers are acting in particular ways is attempted to be illuminated with semi-structured interviews and focus groups, typically with significantly smaller sample sizes. [XXX cite data]
-
-### Product registration and sales
-[moved up]
 
 ### Metering of homes and end-uses
 None of the above methods explicitly capture how much and when appliances are in use. Smart meters and appliance level monitors are becoming ubiquitous, such that recent studies began to collect household and appliance consumption with increasingly high temporal resolution.
 Notable examples include: [XXX Kevin: are these appliance or household level studies?]
 
-- BRANZ Household Energy End-Use Project (HEEP) metered 400 homes in New Zealand (1997 - 2007) [16]
-- STEM metered 300-400 homes in Sweden (2007-08) [17]
-- REMODECE covered over 100 homes in 12 European countries. [18]
+- BRANZ Household Energy End-Use Project (HEEP) metered 400 homes in New Zealand (1997 - 2007) [@Isaac09]
+- STEM metered 300-400 homes in Sweden (2007-08) [@Zimmermann09]
+- REMODECE covered over 100 homes in 12 European countries. [@Almeida11]
 - HES captured appliances in 250 homes in the UK [@HES13]
 
 Smart meter data does not by itself reveal either the appliances in use, nor the activities this consumption supported. With sufficiently high temporal resolution, some appliances can be disaggregated from other loads. @Wilson15 developed approaches to infer activities from smart meter data.
@@ -132,7 +130,7 @@ Similarly, CLNR- British Gas trials, consisting over 13,000 electricity customer
 
 #### Elexon
 
-In the UK Elexon collect electricity use data on a rolling bases an update profiles twice a year to be used for settlement [@Elexon13b]. The target sample size is 2,500 randomly selected households. Profiles are generated for 8 distinct classes, the first two of which are domestic households with or without low cost night time tariffs (Economy 7).
+In the UK Elexon collect electricity use data on a rolling bases and update profiles twice a year. These profiles are used for settlement purposes [@Elexon13b]. The target sample size is 2,500 randomly selected households. Profiles are generated for 8 distinct classes, the first two of which are domestic households with or without low cost night time tariffs (Economy 7).
 
 #### CBT
 The Electricity Smart Metering Customer Behaviour Trials (CBT) involved over 5000 participants, metered on a half hourly bases and exposed to a range of static time of use tariffs (@CER11).
@@ -141,7 +139,7 @@ The data provides statistically robust comparisons between a control group and c
 
 #### CLNR
 The Customer-Led Network Revolution (CLNR) trials involved about 11,000 domestic customers and 2,000 Small and Medium Enterprises. 
-650 of the residential customers were subject to Time of Use tariffs. Data and insights from the project have been published [@CLNR13, @CLNR13a, @CLNR14, @CLNR15].
+650 of the residential customers were subject to Time of Use tariffs. Data and insights from the project have been published [@CLNR13, @CLNR13a, @CLNR14, @CLNR15, @CLNR15a].
 
 #### HES
 The UK's Household Electricity Survey (HES) aimed to provide a more detailed insight into the appliance ownership and use patterns. 250 owner-occupier households were monitored down to the individual appliance level. 26 households were monitored for a full year, the remaining over one month.
@@ -151,7 +149,7 @@ These new sources of data allow to test modelling assumptions and can themselves
 
 # Representing temporality in household demand models
 
-In this section we will explore how well occupancy and activity data support the simulation of realistic household profiles. Empirical data from Elexon [@XXX] and HES is used to contrast intra-day profiles for households and selected appliances.
+In this section we will explore how well occupancy and activity data support the simulation of realistic household profiles. Empirical data from Elexon [@Elexon13b] and HES [@HES13] is used to contrast intra-day profiles for households and selected appliances.
 
 ## Active occupancy based consumption
 
@@ -178,21 +176,14 @@ The reason for this discrepancy is the assumed link between 'food preparation' a
 As this example illustrates, neither the occupancy nor the activity information can be satisfactorily be used to create bottom-up demand profiles. In the next section we therefore explore new ways to strengthen the predictive power of such models.
 
 
-# Outlook for new models with new data
+# Modelling flexibility
 
-- the previous section has shown that temporalities of electricity use in households are poorly captured in current models, due to a lack of data. 
-- the Section on HES {have we got that covered?} described the challenges in scaling up instrumentation based approaches. Both cost and intrusiveness inhibit large scale application.
-- Smart Meter data is expected to become readily available over coming years. However, the experience with early trials in the UK has highlighted challenges of data access and privacy (ref EDRP)
-- Here we discuss not just what data could become easily accessible, but in the context of the previous sections, what evidence this data is intended to support and what limitations remain due to data collection challenges. We will argue that purposeful collection of the 'right' data will allow future models to provide more meaningful answers to emerging questions in energy research.
-
-## New Data - what for?
 Section 1 laid out the evolution of data and models in response to emerging technical and policy challenges, and suggests that data availability shapes and constrains what such models can set out to achieve.
 
 The motivation for initial models was a desire to understand  overall demand measured in annual collective consumption, with a view to reduce it. Later operational challenges requiring temporally and spatially resolved data.
 
-With the emergence of variable renewable sources as cost competitive generators, new challenges need to be addressed to support their effective system integration. Alongside flexible generators, extended and smarter networks and storage, demand side flexibility is expected to play a potentially large role for future system balancing.
-
-Flexibility itself is therefore becoming a unit of enquiry. This is a fundamental change in the location of flexibility, which hitherto is conveniently delivered from fossil fuel stocks. It also constitutes a significant change in how flexibility can be represented in models. A flexible generator can be defined with a small number of parameters
+With flexibility itself is becoming a unit of enquiry residential demand models have to adapt.
+In supply side models a flexible generator can be defined with the following parameters:
 
 - Ramp rate (MW/hour)
 - Capacity constraints (min and max MW)
@@ -200,52 +191,39 @@ Flexibility itself is therefore becoming a unit of enquiry. This is a fundamenta
 - Reliability (%)
 - Marginal cost of operation (£/MWh/h)
 
-Some of these parameters are interdependent. For example, a part loaded plant (somewhere between it's minimum stable operation and its maximum capacity) can ramp significantly faster than one starting from a 'cold' state, where the power station needs to be gradually brought up to temperature - a process that can take hours or even days. A plant operating at its minimum stable operation, which often is well above 30% of its maximum capacity, can only provide 'upward' flexibility, and vice versa for a plant running at capacity.
+Some of these parameters may be interdependent. The ramp rate relies on the plant not being cold and generating within its range of stable operation.
 
-Storage can be represented with similar parameters, principally adding the State of Charge (MWh) as an additional constraint (full stores cannot charge, empty ones cannot discharge).
+Storage can be represented with the addition of storage capacity, state of charge (MWh) and round trip efficiency.
 
-Since storage and generators can be represented as revenue optimising, their operation can be approximated using mathematical optimisation for given market prices, resulting from a static demand profile.
+Since storage and generators can be represented as revenue optimising units, their operation can be approximated using mathematical optimisation for given market prices.
 
-A deterministic approach to demand side flexibility is to decompose the load into appliances and to divide these up into 'flexible' and 'inflexible'. Load of flexible appliances is moved to low cost periods and the resulting load profile can be reintroduced to the existing supply model. This approach can reveal the saving potential from such load shifts (@Strbac16,@SmartPower). It does, however, not reveal the 'cost' of its provision, nor the societal constraints that may inhibit the technical potential.
+One approach to represent demand side flexibility is to divide appliances into 'flexible' and 'inflexible' loads. Flexible appliances are moved to low cost periods and the resulting load profile can be reintroduced to the existing supply model. This approach can reveal the saving potential from such load shifts (@Strbac16,@NIC16). It does, however, not reveal the 'cost' of its provision, nor the societal constraints that may inhibit the theoretical technical potential assumed.
 
-The logical translation of the cost optimisation approach is to assign similar parameters to the demand side as have been used for supply. Roscoe et al. use price elasticity as the principle response mechanism. As the price for electricity goes up, certain appliances are said to reduce in load. Data for this approach is available from trials using differing prices (@CER,@CLNR). Elasticity can be measured as the ratio between a change in demand to change in price, and applied in the model to create a load profile that responds to prices.
+A second approach is to assume price elastic demand. @Roscoe10 use elasticity as the principle response mechanism. As the price for electricity goes up, certain appliances are assumed to reduce in load. Data for this approach is available from time of use trials (@CER11,@CLNR15). 
 
-The latter approach begins to reveal the 'cost' of flexibility and, if collected alongside socio-demographic data, also allows to infer which groups or clusters may be more amenable to flexibility than others.
-
-Price elasticity as a metric is consistent with the 'cost optimisation' principle of supply side models. It may not necessarily be the sole rationale for demand side flexibility. @Grunewald_Demand16 argues that much of the flexibility on the demand side is routed in practices of everyday life. How far the load of a dishwasher can be shifted in time is not just a function of price. Constraints in time and space, skills and availability of clean clothes (e.g. material) all factor heavily in the provision of flexibility.
-
-Here we propose an incremental improvement on existing data, which could provide better visibility of these underlying factors and thus lead to more accurate forward projections of demand side flexibility.
+Price elasticity as a metric is consistent with the 'cost optimisation' principle of supply side models. It may, however, not be the sole rationale for demand side flexibility. @Grunewald16 argues that much of the flexibility on the demand side is routed in practices of everyday life. How far the load of a dishwasher can be shifted in time is not just a function of price. Constraints in time and space, skills and availability of clean clothes (e.g. material) factor heavily in the provision of flexibility [@Higginson14].
 
 ## Measuring flexibility
 
-If the locus of flexibility resides at least partially with people and their practices, then measuring appliance use alone may not provide a good insight into flexibility. Difficult as it may appear at first, capturing activities of electricity users alongside their actual power consumption would illuminate the origins and constraints of flexibility better.
+If the locus of flexibility resides at least partially with people and their practices, then measuring load profiles or appliance use alone may be insufficient as shown in Section 3.2.
 
-Since flexibility is a relative concept -- one can only be flexible in relation to a 'business as usual' case -- it cannot be measured in a single pass. For a power station it is reasonable enough to assume a steady state as a baseline against which to measure a flexible response. For constantly changing, volatile and diverse load profiles of end users (@DEMAND-peak16), the reference baseline is harder to define. Some users may routinely use little electricity at certain times. Crediting them with flexibility would be misleading.
+Unlike with power stations, where flexibility can be measured as a change to its current output, demand side loads are naturally fluctuating. This makes the reference baseline a major challenge in assessing its flexibility.
+Flexibility is a relative concept: one can only be flexible in relation to a 'business as usual' case. For the demand side this means that flexibility cannot be measured or even inferred from a single measurement.
 
-A sufficiently large and representative sample is therefore important to form a reference baseline, before claims about flexibility can be made.
+First, a sufficiently large and representative sample is needed to provide a reference baseline or control group. Against this baseline flexibility can be measured as a dynamic response. The observed difference can be in response to any change conditions between a control group and the sample group, including, but not limited to price signals.
 
-From this baseline flexibility can be measured as a dynamic response. The response can be any difference in conditions between a control group and the sample group, including, but not limited to price signals.
+The variability in end uses over time and across populations is high, whereas the typical responses observed in trials is typically small (see Section 2). To reliably tell true responses from stochastic variation, large sample sizes may be required. Estimates for appropriate sample sizes tend to be greater than 2000, which is significantly larger than most studies in this area to date.
 
-The variability in end uses over time and across populations is high, whereas the typical responses observed in trials are relatively small (5-10% of load at peak times). To reliably tell true responses from stochastic variation, large sample sizes may be required. Estimates for appropriate sample sizes tend to be greater than 2000, which is significantly larger than most studies in this area to date.
-
-Smart meter data is expected to become available at these scales. @Wilson propose methods to infer activity information from these data. Here we propose an alternative approach which captures activities explicitly and may inform inferences of activities in future.
-
-<!-- 
-- what is flexible (people rather than appliances)
-- needs a baseline (flexible in relation to what)
-- needs dynamic monitoring (baseline vs flexible case)
-- high variability and diverse set of enablers and inhibitors for flexibility (needs a large sample)
- -->
+Smart meter data is expected to become available at such scales and methods to infer activity information from these data are being developed, such as those by @Wilson15. Here we propose an alternative approach which captures activities explicitly.
 
 ## Collecting new data on flexibility
 
-Insights into human activities with large sample sizes is already available in the form of time use studies. These collect self reported activity diaries from thousands of participants. Time use data provides rich insights into the allocation of time to different activities (time spent asleep, at work, with friends...) and its distribution within a population (male / female, rich / poor, young / old). These data are collected longitudinally around every decade in many European countries using harmonised time use codes. These allow comparisons between regions and trends over time \footnote{Some caution should be exercised when making such comparisons. Inconsistencies in the meaning of activities across time and cultures, and changes in methodology may limit their comparability. See @Anderson16 }
-
-Time use data already informs occupancy patterns for household models (see Section 3 on CREST), and has been used to understand the possible composition of loads (@Torriti15).
+Insights into human activities with large sample sizes is already available in the form of time use studies (see 2.3.5). 
+Time use data already informs the occupancy and activity patterns, observed in Section 3, and has been used to understand the possible composition of loads (@Torriti15).
 
 What time use data presently does not allow to infer is energy consumption or flexibility. Here we will discuss how to incorporate these two new dimensions.
 
-### Conditions for new data to support insights into flexiblity
+### Conditions for new data to support insights into flexibility
 
 We argue for four conditions which new data on demand side flexibility should adhere to, if policy relevance is to be achieved: 
 
@@ -268,71 +246,24 @@ It cannot be observed within a static snapshot. Even an interview approach attem
 The leap from observing correlations between interventions and responses to claiming a causal relationship can easily lead to artificial results, especially when many variables are tested at the same time. Wherever large datasets with a large number of variables are used for analysis it is therefore advisable to set out a clear working hypotheses first, to ensure that findings are genuine. As a simple example, if energy data can be broken down into hundreds of sub-groups, it is very likely that one of these sub-groups has greatly reduced load during an intervention. If this happens to be male, over 65s, with a low income, 2 children and a name beginning with 'F', does not necessarily mean that this group is more responsive or flexible. If however, one set out with this hypothesis and it is borne out by the data, such finding should be taken more seriously.
 
 ### Suggested approaches to collect such data
-Time-use data fulfils the first condition for scalability. By combining this collection method with a low cost monitoring approach for electricity, it is possible to create a baseline of activity related electricity use. Such data collection has been developed by the METER project, which deploys low cost smart phones to collect these data [ref ECEEE].
+Time-use data fulfils the first condition for scalability. By combining this collection method with a low cost monitoring approach for electricity, it is possible to create a baseline of activity related electricity use. Such data collection has been developed by the METER project, which deploys low cost smart phones to collect these data [@Grunewald15a].
 
-All members of a household above the age of eight are encouraged to complete a time-use diary over 28 hours (spanning two 5-9pm periods), while their combined load profile is sampled with 1 second resolution.
-
-Household and individual surveys (see Appendix A) are collected, such that data can be grouped and clustered.
+All members of a household above the age of eight are encouraged to complete a time-use diary over 28 hours (spanning two 5-9pm periods), while their combined load profile is sampled with 1 second resolution. Household and individual surveys are collected, such that data can be grouped and clustered.
 
 In a second phase the passive observation of activities and electricity loads will turn into active response observation, where participants will receive specific interventions and any changes in both activities and load shape can be observed and contrasted against a control group without intervention. The scale allows for groups of sufficient size to be compared and even small responses to be exposed.
 
-## Applying new data to models
-
-The most conventional intervention that can be measured with the above approach is price response. Studies such as CER and CLNR have already demonstrated that peak reductions of 5-10% are achievable in response to peak time prices. The resulting price elasticities can readily be incorporated into existing techno-economic models.
-
-The new data can add to the exciting data is the activity dimension, which allows to narrow down by activity, socio-demographic grouping where responses are most likely to be forthcoming and which inhibiting factors may need to be addressed to enable additional flexibility.
-
-New model functionality may be required to accommodate the latter. Instead of price as the dependent variable, it is possible to introduce new degrees of freedom, such as the rise or decline of particular practices, which are associated with different levels of consumption or flexibility.
 
 
-
-# Conclusion
-# Appendix A
-
-Instead of working with conveniently available data, this paper suggests that purposeful and targeted collection of data may help future energy demand models to better reflect increasing complexities of 'responsive' demand.
-
-
-## Household questionnaire 
-
-meter_household_questionnaire.md (30 May 2016 15:22) 
 
 # Conclusions and discussion [all]
-¬	Summarise
-¬	Recommendations for future research
-¬	Any implications for policy?
+
+Residential demand models have undergone considerable improvements over time in their ability to represent household demand at a more accurate and granular level. Initial attempts to simulate the temporality of demand are still held back by appropriate data.
+
+We have shown systematic errors in the prediction of peak demand contributions of up to 45%.
+
+Instead of working with conveniently available data, this paper suggests that purposeful and targeted collection of data may help future energy demand models to better reflect increasing complexities of 'responsive' demand. To address the data shortage and to prepare for future modelling needs on demand side flexibility we proposed 4 criteria, which such data needs to meet: 1) scalability, 2) reference baseline, 3) dynamic collection and 4) a working hypothesis.
+
+Such a methodology has been presented based on the large scale co-collection of time-use and high resolution household demand data.
 
 # References
-
-
-1.	Swan, L.G. and V.I. Ugursal, Modeling of end-use energy consumption in the residential sector: A review of modeling techniques. Renewable and Sustainable Energy Reviews, 2009. 13(8): p. 1819-1835.
-2.	Kavgic, M., et al., A review of bottom-up building stock models for energy consumption in the residential sector. Building and Environment, 2010. 45(7): p. 1683-1697.
-3.	Fumo, N. and M.A. Rafe Biswas, Regression analysis for prediction of residential energy consumption. Renewable and Sustainable Energy Reviews, 2015. 47: p. 332-343.
-4.	Aydinalp, M., V. Ismet Ugursal, and A.S. Fung, Modeling of the appliance, lighting, and space-cooling energy consumptions in the residential sector using neural networks. Applied Energy, 2002. 71(2): p. 87-110.
-5.	Shorrock, L.D. and J.E. Dunster, The physically-based model BREHOMES and its use in deriving scenarios for the energy use and carbon dioxide emissions of the UK housing stock. Energy Policy, 1997. 25(12): p. 1027-1037.
-6.	Fawcett, T., K. Lane, and B. Boardman, Lower Carbon Futures for European households, 2000, http://www.eci.ox.ac.uk/research/energy/downloads/lowercarbonfuturereport.pdf: Oxford.
-7.	Lane, K., Modelling Approach. Appendix O to Lower Carbon Futures, 2000: Environmental Change Institute, University of Oxford.
-8.	Boardman, B., et al., DECADE: Transforming the UK Cold Market, 1997, Environmental Change Unit, University of Oxford: Oxford.
-9.	DECADE, DECADE (Domestic Equipment and Carbon Dioxide Emissions): 2 MtC, 1997, Environmental Change Institute, University of Oxford.
-10.	Lane, K. and L. Harrington, Long Term Evaluation of Energy Efficiency Policy Measures for Household Refrigeration in Australia: An assessment of energy savings since 1986., 2010.
-11.	Michaelis, C., et al. Lifting the label: evaluating the real impact of energy labelling in Vietnam. in IEPEC. 2014. Berlin, Germany: IEPEC.
-12.	ECI, 40% House, 2005, Environment Change Institute, University of Oxford.
-13.	Lane, K., et al., Foresight scenarios for the UK domestic sector, 2005, Environmental Change Institute, University of Oxford.
-14.	CLG, Housing in England 2007-08, C.a.L. Government, Editor 2009: London.
-15.	CLG, English House Condition Survey: Interview Survey Documentation 2007-08, C.a.L. Government, Editor 2010: London.
-16.	Isaacs, N., et al., Energy use in New Zealand Household: Report on the Year 10 Analysis for the Household Energy End-use Project (HEEP), 2006.
-17.	Zimmermann, J.P., End-use metering campaign in 400 households in Sweden: Assessment of the Potential Electricity Savings Enertech, Editor 2009.
-18.	Aníbal de Almeida, et al. Residential Monitoring to Decrease Energy Use and Carbon Emissions in Europe in EEDAL. 2006. London.
-19.	Fell, D. and G. King, Domestic energy use study: to understand why comparable households use different amounts of energy, D.f.E.a.C.C. (DECC), Editor 2012, Brook Lyndhurst: London.
-20.	CER, Electricity Smart Metering Customer Behaviour Trials (CBT) Findings Report, 2011, The Commission for Energy Regulation,: Dublin.
-21.	Zimmermann, J.-P., et al., Household Electricity Survey:  A study of domestic electrical product usage, 2012.
-22.	Sidebotham, L., Customer-Led Network Revolution: Progress Report 7, 2014.
-23.	Powells, G., et al., Peak electricity demand and the flexibility of everyday life. Geoforum, 2014. 55: p. 43-52.
-
-Jose
-
-[CER2011] Irish Commission for Energy Regulation, Electricity Smart Metering Customer Behaviour Trials (CBT): Findings Report, 2011.
-[HES2012] Zimmerman et al., Household Electricity Survey: A study of domestic electrical product usage, 2012.
-[CLNR2015] Sidebotham, Liz, Customer-Led Network Revolution: Project closedown report, 2015.
-[Richardson2010] Richardson et al., Domestic electricity use: A high-resolution energy demand model, Energy and Buildings, 2010.
-
 
