@@ -3,7 +3,7 @@ We present systematic shortcomings in the representation of activity based elect
 
 # INTRODUCTION
 
-The role of the demand side is expected to undergo a fundamental change from a passive load that is to be met using the 'predict and provide' paradigm towards an active and responsive part of the system. 
+The role of the demand side is expected to undergo a fundamental change from a passive load that is to be met using the 'predict and provide' paradigm, towards an active and responsive part of the system. 
 With the closure of 55% of the UK's fossil fuel capacity over the next decade, the system flexibility, which these plant provide, will be greatly reduced. If less flexible low carbon sources are to take their place, new forms of flexibility are needed. The National Infrastructure Commission identified a annual saving potential of up to £8.1bn by 2030 [@NIC16] through a combination of storage, interconnections and demand-side-response (DSR).
 
 The extent to which the 'technical potential' for DSR can be realised in practice is not well understood. Demand side modelling efforts therefore need to extend their focus from assessing demand reduction opportunities, towards a better understanding of the precise timing of demand and its potential flexibility. 
@@ -11,8 +11,8 @@ The extent to which the 'technical potential' for DSR can be realised in practic
 In this paper we argue that current models are not well equipped to address these new requirements and that supporting data is still lacking at the required scale. In Section 2 we perform a brief review of past developments in residential demand models and the data used to support them alongside some of the key literature in this area. The limitations of the latest generation of models to represent the temporally of demand is explored in Section 3, before Section 4 sets out opportunities to overcome these with new data collection approaches. 
 
 
-# REVIEW OF MODELS AND DATA USED FOR UNDERSTANDING RESIDENTIAL DEMAND
-## Taxonomy of residential energy models
+# REVIEW OF RESIDENTIAL DEMAND MODELS AND DATA
+## Taxonomy 
 Energy models are generally used to explore and explain changes in energy consumption. There are generally two main approaches to modelling energy consumption in the residential sector:  top-down and bottom-up - the terminology referring to the hierarchical level of the data inputs. The use of each depends on the data available and the purpose of the analysis.  Top-down models generally make use of historic sector specific (e.g. residential) time series data of energy consumption and related sector-specific data.  Such top-down models are usually driven by econometric data (such as energy and appliance prices) and technological data (such as autonomous rates of efficiency improvement and ownership rates). On the other hand, bottom-up models require significantly more data at the sub-sector level, and so can account for energy consumption at the regional, individual household or equipment level. Figure 1 shows a simple classification of residential modelling.  [@Swan09,@Kavgic10] 
 
 ![Classification of residential model types. Based on @Swan09](fig/classification.png)
@@ -27,8 +27,7 @@ We review the historical development of UK residential end-use demand models wit
 ### BREHOMES
 BREHOMES is a physically-based residential housing stock model, providing national energy consumption estimates by house type [@Shorrock91]. It requires detailed information on the building type, heating system, internal and external temperatures, etc. Different versions of the underlying BREDEM algorithm support annual consumption (BRDEM-12) or monthly figures (BREDEM-8). This model allows the exploration of technology and policy interventions, especially relating to heating aspects of the home. 
 
-For full housing physically-based stock models, such as this one, the following data is typically required:
-models, the following data are required:
+For full housing physically-based stock models the following data is typically required:
 
 - areas of floors, windows, doors, and their U-values.
 - heating system information (fuel, type, efficiency), internal
@@ -41,22 +40,24 @@ Sources of such data are discussed in Section XXX3.
 ### DECADE
 
 The Domestic equipment and carbon dioxide emissions (DECADE) model advanced the resolution of BREHOMES by separating out lighting and appliances.
- DECADE is a detailed end-use model of energy consumption supporting product policy on mandatory energy labels and minimum energy performance standards. [@Fawcett00,@Lane00]
+ DECADE is a detailed end-use model of energy consumption supporting product policy on mandatory energy labels and minimum energy performance standards. (@Fawcett00, @Lane00)
 
-The detailed end-uses include cooking, lighting, water heating, consumer electronics, refrigeration. 
-This modelling approach produces annual energy consumption by end-use, with the primary use being the ex-ante impact assessments of technical potential, variation in usage patterns, and policy options [@Boardman94,@Boardman95]. Similar modelling approaches are used internationally [10 XXX I could not find this published].
+The detailed end-uses include cooking, lighting, water heating, consumer electronics and refrigeration. 
+This modelling approach produces annual energy consumption by end-use, with the primary use being the ex-ante impact assessments of technical potential, variation in usage patterns, and policy options [@Boardman95]. Similar modelling approaches are used internationally [10 XXX I could not find this published].
 
-In addition to appliance stocks used for conventional stock models, this approach draws on replacement rates and use statistics as complementary data.
+In addition to static appliance stocks, this approach draws on statistical methods to estimate product replacement rates based on market research data.
 
-Product replacement rates are inferred from market research data on sales volume and product turnover. In some cases these data are available for very specific models or product classifications. However, lack of rigorous collection of appliance disposal rates leaves some uncertainty over the number of appliances remaining in service, such as old and inefficient fridges operating as secondary 'beer fridges' in the garage.
+However, lack of rigorous collection of appliance disposal rates leaves some uncertainty over the number of appliances remaining in service, such as old and inefficient fridges operating as secondary 'beer fridges' in the garage.
 
 Inferring statistics on the actual use patterns of appliances from the available data is one of the most challenging aspects for models of this type. These parts of the simulation carry the largest variance and uncertainty. They are reliant on a patchwork of evidence from industry surveys, diaries and metered surveys.
 
-For lighting, it is possible to deduce use from lamps sold, stock level and the technical lifespan. For incardecants with a short lifetime (1000 hours) and high replacement rate, such estimates give a reasonable estimate. Whereas the deployment of LED is larger numbers make such estimates more difficult. The timing of lighting use still has to be assumed. Some lighting may remain on all day or throughout the night, regardless of active occupancy. More recently appliance level metering  have increased confidence in these figures (see HES below).
+For lighting, it is possible to deduce use from lamps sold, stock level and the technical lifespan. For incandescents with a short lifetime (1000 hours) and high replacement rate, such estimates give a reasonable estimate. Whereas the deployment of LED in larger numbers make such estimates more difficult. 
 
 Cooking appliances, such as ovens or hobs, are derived from regression analysis of cooking data of sample homes. [@Palmer97]
 
-DECADE included first attempts to estimate load curves by end-use, but data supporting data was insufficient at the time and still remains an inhibiting factor in international attempts to adopt this approach [@Michaelis14]. Societal distribution of consumption is not represented.
+DECADE included first attempts to estimate load curves by end-use, but supporting still remains an inhibiting factor in international attempts to adopt this approach [@Michaelis14]. 
+
+More recently appliance level metering  have increased confidence in the estimates on the timing of appliance use (See Section 2.2).
 
 
 ### UKDCM 
@@ -65,11 +66,11 @@ The DECADE Modelling was extended to create the UK Domestic Carbon Model (UKDCM)
 ### CREST 
 The Centre for Renewable Energy Systems Technology (CREST) model simulates household load profiles with one minute resolution (@Richardson10b). The model has found a wide range of applications, including network constraints analysis. 
 
-Load profiles are generated based on the Markov chain modelling technique, whereby each state is the result of a set of probability distributions resulting from the previous state. A household has a given number of occupants, who have a probability distribution of being 'active occupants', i.e. likely to use certain appliances. The occupancy, and to some extent the activity probabilities, are informed by the UK Time Use survey of 2000 (@Lader06).
+Load profiles are generated based on the Markov chain modelling technique, whereby each state is the result of a set of probability distributions resulting from the previous state. A household is assigned a given number of occupants, who have a probability distribution of being 'active occupants' throughout the day, making them more likely to use certain appliances. The occupancy, and to some extent the activity probabilities, are informed by the UK Time Use survey of 2000 (@Lader06).
 
 The appliance ownership itself is based on probability distributions of 33 common household appliances from the UK Market Transformation Programme [@Defra06]
 
-The stochastic method results in each model run to produce a unique and 'realistic' load profile.
+This stochastic method results in each model run to produce a unique attempt of producing a 'realistic' load profile. In Section 3 we will contrast these profiles with empirical data.
 
 
 ## Data sources for bottom-up household models
@@ -77,16 +78,14 @@ This section summarises some of the key data sources used in bottom-up energy-us
 
 ### Sales figures and market research
 Governments and private organisations collect statistics and information on product sales and their technical characteristics. Australia, U.S.A. and China keep formal registration databases of technologies deployed, which provide robust data for appliance stock models. 
-Various countries require energy-using products to be registered centrally before they can be placed in the market to comply with minimum energy performance or labelling requirements. The EU has not yet adopted such a database.
+Various countries require energy-using products to be registered centrally to comply with minimum energy performance or labelling requirements. The EU has not yet adopted such a database.
 
-Technical information on products can also be obtained directly from manufactures. Specifications are increasingly available online and can be collected via web 'scrapers'. Key parameters include U-values, power ratings, and efficiency values. [XXX ref]
-
-Given the short life of incandescent light bulbs, it is possible for models like DECADE to infer their use based on the replacement rate. For LEDs the link between sales and total energy consumed has become more difficult. [XXX Kevin - is that fair to say?]
+Technical information can also be obtained directly from manufactures and increasingly online. Key parameters include U-values, power ratings, and efficiency values. [XXX ref]
 
 ### Physical inspection of homes
 Physical inspections can provide insights into the ownership and distribution of end-use equipment along with physical characteristics of the buildings themselves, such as used for SAP assessments.
 
-Such surveys can be through home visits, such as those used to generate SAP assessments or provide representative national statistics on the housing stock. Governments also collect and collate these through the use of national surveys. Cost and intrusiveness of this approach is high.
+Home visits are used to generate SAP assessments and to provide representative national statistics on the housing stock. Cost and intrusiveness of this approach is high.
 
 ### Home surveys
 Governments and market research companies collect information on appliance ownership, recent sales and efficiency measures via questionnaires. Representative panels with multiple thousand surveys are available from GfK and the English Housing Survey (EHS).
@@ -100,56 +99,50 @@ Socio-demographic information is included or can be brought in from other survey
 ### Interview survey of householders
 @Janda11 and @Huebner15 and @Fell12] argue that energy consumption of homes is poorly represented by their physical characteristics alone. 65% of the variation in energy use is not attributable to appliances or building properties.
 
-Interviews of the householders themselves can provide not only insights into ownership of equipment (without the need for a physical inspection), but also help to understand usage patterns and motivation for use.
+Interviews of the householders themselves can provide not only insights into ownership of equipment, but also help to understand usage patterns and motivation for use.
 
 Relevant UK examples include the annual Survey of English Housing (N=15,000), published annually as Housing in England reports 1993-93 [XXX should this read 83?] to 2007-08 inclusive [@DCLG16a]. Prior to 2008, The ONS interviewed householders for the English Household Conditions Survey (EHCS) [@DCLG16].
 
 ### Diaries and time-use surveys
 Greater detail of household activities can be obtained with time-use diaries and targeted diaries focussing on equipment usage, such as routines and frequency of washing machine use. [XXX cite data?]
 
-Time use diaries present a special case of survey and provide a rich insight into what people are actually doing (activity). 
-These collect self reported activity diaries from thousands of participants revealing timing and durations. [@Gershuny03]
+Time use diaries present a special case of survey and provide a rich insight into what people are actually doing. 
+These collect self reported activity diaries from thousands of participants revealing the timing and durations of activities. [@Gershuny03]
 
-These data are collected longitudinally around every decade in many European countries using harmonised time use codes. These allow comparisons between regions and trends over time \footnote{Some caution should be exercised when making such comparisons. Inconsistencies in the meaning of activities across time and cultures, and changes in methodology may limit their comparability. See @Anderson16 }
+These data are collected longitudinally around every decade in many European countries using harmonised time use codes (@eurostat14). These allow comparisons between regions and trends over time \footnote{Some caution should be exercised when making such comparisons. Inconsistencies in the meaning of activities across time and cultures, and changes in methodology may limit their comparability. See @Anderson16 }
 
 Understanding _why_ consumers are acting in particular ways is attempted to be illuminated with semi-structured interviews and focus groups, typically with significantly smaller sample sizes. [XXX cite data]
 
 ### Metering of homes and end-uses
-None of the above methods explicitly capture how much and when appliances are in use. Smart meters and appliance level monitors are becoming ubiquitous, such that recent studies began to collect household and appliance consumption with increasingly high temporal resolution.
-Notable examples include: [XXX Kevin: are these appliance or household level studies?]
+The emergence of smart meters and appliance level monitors allows to collect household and appliance consumption directly and with increasingly high temporal resolution.
+Notable studies in this area include: [XXX Kevin: are these appliance or household level studies?]
 
 - BRANZ Household Energy End-Use Project (HEEP) metered 400 homes in New Zealand (1997 - 2007) [@Isaac09]
 - STEM metered 300-400 homes in Sweden (2007-08) [@Zimmermann09]
 - REMODECE covered over 100 homes in 12 European countries. [@Almeida11]
 - HES captured appliances in 250 homes in the UK [@HES13]
 
-Smart meter data does not by itself reveal either the appliances in use, nor the activities this consumption supported. With sufficiently high temporal resolution, some appliances can be disaggregated from other loads. @Wilson15 developed approaches to infer activities from smart meter data.
+Smart meter data does not by itself reveal either the appliances in use, nor the activities this consumption supported. With sufficiently high temporal resolution, some appliances can be disaggregated from other loads. @Wilson15 developed approaches to infer activities from such smart meter data.
 
-Data from electricity meters can be used, to track how consumers respond to different signals.  For example, the CER, electricity smart metering customer behaviour trials. [insert information here. Check if should be moved to next section. . More experiment, over 5,000 recruits.]
-Similarly, CLNR- British Gas trials, consisting over 13,000 electricity customers, is generating useful information that can be used in end-use models. However, it worth nothing that it is slightly biased towards customers with low carbon technologies, and is also examined load (and generation) profiles from meter data. [insert more, and check if we should move]
+Smart meters also allow for large scale and to observe responses to price signals and other interventions. Such data is used in the following studies:
 
-#### Elexon
+**Elexon**: In the UK, Elexon collect electricity use data on a rolling bases and update profiles twice a year. These profiles are used for settlement purposes. The target sample size is 2,500 randomly selected households. Profiles are generated for 8 distinct classes, the first two of which are domestic households with or without low cost night time tariffs (Economy 7). [@Elexon13b]
 
-In the UK Elexon collect electricity use data on a rolling bases and update profiles twice a year. These profiles are used for settlement purposes [@Elexon13b]. The target sample size is 2,500 randomly selected households. Profiles are generated for 8 distinct classes, the first two of which are domestic households with or without low cost night time tariffs (Economy 7).
+**CBT**:
+The Electricity Smart Metering Customer Behaviour Trials (CBT) involved over 5000 participants, metered on a half hourly bases and exposed to a range of static time of use tariffs (@CER11). The data provides statistically robust comparisons between a control group and customers exposed to higher peak time prices. Overall usage was reported to be reduced by 2.5% and peaks by as much as 8.8%. What this study is not able to answer is how these changes came about and whether the peak reduction was a form of 'load shifting' or the avoidance of loads.
 
-#### CBT
-The Electricity Smart Metering Customer Behaviour Trials (CBT) involved over 5000 participants, metered on a half hourly bases and exposed to a range of static time of use tariffs (@CER11).
+**CLNR**:
+The Customer-Led Network Revolution (CLNR) trials involved about 11,000 domestic customers. 650 of them were subject to Time of Use tariffs. Data and insights from the project have been published [@CLNR15a].
 
-The data provides statistically robust comparisons between a control group and customers exposed to higher peak time prices. Overall usage was reported to be reduced by 2.5% and peaks by as much as 8.8%. What this study is not able to answer is how these changes came about and whether the peak reduction was a form of 'load shifting' or the avoidance of loads.
+**HES**:
+The UK's Household Electricity Survey (HES) aimed to provide a more detailed insight into the appliance ownership and use patterns. 250 owner-occupier households were monitored down to the individual appliance level. 26 households were monitored for a full year, the remaining for one month.
+Some participants were also required to keep detailed logs on their use of selected appliances. (@HES13, @Zimmermann12)
 
-#### CLNR
-The Customer-Led Network Revolution (CLNR) trials involved about 11,000 domestic customers and 2,000 Small and Medium Enterprises. 
-650 of the residential customers were subject to Time of Use tariffs. Data and insights from the project have been published [@CLNR13, @CLNR13a, @CLNR14, @CLNR15, @CLNR15a].
-
-#### HES
-The UK's Household Electricity Survey (HES) aimed to provide a more detailed insight into the appliance ownership and use patterns. 250 owner-occupier households were monitored down to the individual appliance level. 26 households were monitored for a full year, the remaining over one month.
-Some participants were also required to keep detailed logs of how they used certain appliances. (@HES13, @Zimmermann12)
-
-These new sources of data allow to test modelling assumptions and can themselves enable enhanced modelling approaches. The next section will build on their ability to give insights into the timing of electricity use at household level.
+These new sources of data allow to test modelling assumptions and can themselves enable enhanced modelling approaches. The next section will compare these empirical data collections with attempts to simulate temporality in demand.
 
 # Representing temporality in household demand models
 
-In this section we will explore how well occupancy and activity data support the simulation of realistic household profiles. Empirical data from Elexon [@Elexon13b] and HES [@HES13] is used to contrast intra-day profiles for households and selected appliances.
+In this section we will explore how well occupancy and activity data support the simulation of realistic household profiles. Measured data from Elexon [@Elexon13b] and HES [@HES13] is used to contrast intra-day profiles for households and selected appliances.
 
 ## Active occupancy based consumption
 
@@ -159,21 +152,21 @@ Figure XXX2 shows the profiles for each of the three sources of data averaged ac
 
 ![Mean daily load profiles](fig/load_profiles.png)
 
-This suggests that the link between active occupancy and consumption may not be as strong as assumed in the model. Night time baseload, which occurs when occupants are classified as 'non active', continues significant loads. A possible explanation is the prevalence of stand-by appliances, which do not require active user interaction. Evidence for smart appliances operating deliberately at night has not been found in the available data.
+This suggests that the link between active occupancy and consumption may not be as strong as assumed in the model. Night time baseload, which occurs when occupants are classified as 'non active', sees significant loads levels in the metered data. A possible explanation is the increasing prevalence of stand-by appliances, which do not require active user interaction. Evidence for smart appliances operating deliberately at night has not been found in the available data.
 
 The overestimate of 'peak periods' is to some extent a compensation effect, due to the calibration forcing the output to produce national average figures over a full day. However, Figure XXX2 shows that mid-day periods are less affected. This, too, is partially explained with lower active occupancy in mid-day.
 
 ## Activity based consumption
 
-HES data allows this analysis to go one step further. The appliance level data give some additional insights into 'what people did' with the electricity at different times of day. We will focus here on 'cooking', which in the CREST model is treated as an activity with a probability distribution informed by 'food preparation' activities in the time use survey from 2000.
+HES data allows this analysis to go one step further. The appliance level data give some additional insights into what people may have 'done' with the electricity at different times of day. We will focus here on 'cooking', which in the CREST model is treated as an activity with a probability distribution informed by 'food preparation' activities in the time use survey from 2000.
 
 Figure XXX3 contrasts the likelihood of a cooker being used at a given time of day. The CREST data follows a similar profile to the overall use, with morning and evening peaks. The empirical HES data, however, has a far less pronounced morning peak for cookers.
 
 The reason for this discrepancy is the assumed link between 'food preparation' and use of a 'cooker'. While many survey participants reported food preparation in the morning hours, the use of a cooker is less likely to play a role in breakfast preparation than, for instance, at dinner time.
 
-![Likelyhood of using a cooker on a weekday based on empirical (HES) and simulated data (CREST)](fig/cooker_profile.png)
+![Likelyhood of using a cooker on a weekday based on measured (HES) and simulated data (CREST)](fig/cooker_profile.png)
 
-As this example illustrates, neither the occupancy nor the activity information can be satisfactorily be used to create bottom-up demand profiles. In the next section we therefore explore new ways to strengthen the predictive power of such models.
+As this example illustrates, neither the occupancy nor the activity information by itself can be satisfactorily be used to create bottom-up demand profiles. In the next section we therefore explore new ways to strengthen the predictive power of such models.
 
 
 # Modelling flexibility
